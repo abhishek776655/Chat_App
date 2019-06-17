@@ -1,0 +1,102 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="./css/chatStyle.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+</head>
+<body>
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+        <div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
+            <div id=" card-Header"class="card-header">
+            </div>
+            <div id ="side-Bar" class="card-body contacts_body">
+            </div>
+            <div class="card-footer"></div>
+        </div></div>
+        <div class="col-md-8 col-xl-6 chat">
+            <div class="card">
+                <div class="card-header msg_head">
+                    <div class="d-flex bd-highlight">
+
+                        <div class="user_info">
+                            <span>Chat Room</span>
+                        </div>
+                    </div>
+                </div>
+                <div id ="messagesBody" class="card-body msg_card_body">
+                    <div id="messages"></div>
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+
+                        <form id="message-form">
+                            <div>
+                           <li> <input size="50" class="form-control type_msg" name="message" placeholder="Message" required autocomplete="off"><li>
+                                <li><button id="Send" class="btn btn-primary btn-lg">Send</button></li>
+
+                            </div>
+
+                        </form>
+                            <button id="send-location"  class="btn btn-primary btn">Send Location</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script id="message-template" type="text/html">
+    <div class="d-flex justify-content-start mb-4">
+        <div class  ="userinfo">{{username}}</div>
+        <div class="msg_cotainer">
+            {{message}}
+        </div>
+        <div class="msg_time">{{createdAt}}</div>
+
+    </div>
+</script>
+
+<script id="location-message-template" type="text/html">
+    <div class="d-flex justify-content-start mb-4">
+        <div class  ="userinfo">{{username}}</div>
+        <div class="msg_cotainer">
+        <p><a href="{{url}}" target="_blank">My current location</a></p>
+        </div>
+
+        <div class="msg_time">{{createdAt}}</div>
+    </div>
+</script>
+<script id="SideBar" type="text/html">
+    <div class="room-title"><h2>{{room}}</h2></div>
+    <div class="active-user"><h3>Active Users</h3></div>
+    <ul class="contacts">
+        {{#users}}
+        <li class="userstyle">
+            <div class="d-flex bd-highlight">
+                <div class="user_info">
+                    <span>{{username}}</span>
+                </div>
+            </div>
+        </li>
+        {{/users}}
+    </ul>
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>
